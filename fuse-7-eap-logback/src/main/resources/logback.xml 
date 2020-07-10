@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configuration scan="true" scanPeriod="30 seconds">
+ 
+    <!-- Send debug messages to System.out -->
+    <appender name="STDOUT" class="ch.qos.logback.core.ConsoleAppender">
+        <!-- By default, encoders are assigned the type ch.qos.logback.classic.encoder.PatternLayoutEncoder -->
+        <!-- standard encoder -->
+        <!-- <encoder>
+            <pattern>%d{yyyy-MM-dd_HH:mm:ss.SSS} [%thread] %-5level %logger{36} - breadcrumbId:%X{camel.breadcrumbId} - %-10.10X{camel.exchangeId} - %-10.10X{camel.routeId} - %msg%n</pattern>
+        </encoder> -->
+
+        <!-- JSON encoder -->
+        <encoder class="net.logstash.logback.encoder.LogstashEncoder">
+            <includeMdc>true</includeMdc>
+        </encoder>
+    </appender>
+
+    <appender name="FILE" class="ch.qos.logback.core.FileAppender">
+        <file>/tmp/logs/esbcamel.log</file>
+        <!-- standard encoder -->
+        <!-- <encoder>
+            <pattern>%d{yyyy-MM-dd_HH:mm:ss.SSS} [%thread] %-5level %logger{36} - breadcrumbId:%X{camel.breadcrumbId} - %-10.10X{camel.exchangeId} - %-10.10X{camel.routeId} - %msg%n</pattern>
+        </encoder> -->
+
+        <!-- JSON encoder -->
+        <encoder class="net.logstash.logback.encoder.LogstashEncoder">
+            <includeMdc>true</includeMdc>
+        </encoder>
+    </appender>
+
+    <!-- Send debug messages to a file -->
+    <!-- <appender name="FILE" class="ch.qos.logback.core.rolling.RollingFileAppender"> -->
+        <!-- <file>/data/applications/eap7/wildfly/jboss-eap-7.2/standalone/log/esbcamel.log</file> -->
+        <!-- <file>/tmp/logs/esbcamel.log</file>
+        <encoder class="ch.qos.logback.classic.encoder.PatternLayoutEncoder">
+            <pattern>%d{yyyy-MM-dd_HH:mm:ss.SSS} [%thread] %-5level %logger{36} - breadcrumbId:%X{camel.breadcrumbId} - %-10.10X{camel.exchangeId} - %-10.10X{camel.routeId} - %msg%n</pattern>
+        </encoder>
+  
+        <rollingPolicy class="ch.qos.logback.core.rolling.FixedWindowRollingPolicy"> -->
+            <!-- <FileNamePattern>/data/applications/eap7/wildfly/jboss-eap-7.2/standalone/log/esbcamel.%i.log.zip</FileNamePattern> -->
+            <!-- <FileNamePattern>/tmp/logs/esbcamel.%i.log.zip</FileNamePattern>
+            <MinIndex>1</MinIndex>
+            <MaxIndex>10</MaxIndex>
+        </rollingPolicy>
+  
+        <triggeringPolicy class="ch.qos.logback.core.rolling.SizeBasedTriggeringPolicy">
+            <MaxFileSize>2MB</MaxFileSize>
+        </triggeringPolicy>
+    </appender> -->
+ 
+ 	<logger name="org.springframework" level="ERROR">
+        <!-- <appender-ref ref="STDOUT" /> -->
+        <appender-ref ref="FILE" />
+    </logger>
+ 
+    <!-- By default, the level of the root level is set to DEBUG -->
+    <root level="INFO">
+        <!-- <appender-ref ref="STDOUT" /> -->
+        <appender-ref ref="FILE" />
+    </root>
+</configuration>
