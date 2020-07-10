@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configuration status="warn">
+
+    <Appenders>
+        <File name="FILE" fileName="/tmp/logs/esbcamel.log" append="true">
+            <PatternLayout pattern="[%-5level] %d{yyyy-MM-dd HH:mm:ss.SSS} [%t] %c{1} - breadcrumbId:%X{camel.breadcrumbId} - %-10.%X{camel.exchangeId} - %-10.%X{camel.routeId} - %msg%n"/>
+        </File>
+        
+        <!-- <RollingFile name="fileLogger" fileName="/tmp/logs/esbcamel.log" filePattern="${basePath}/esbcamel-%d{yyyy-MM-dd}.log">
+            <PatternLayout>
+                <pattern>[%-5level] %d{yyyy-MM-dd HH:mm:ss.SSS} [%t] %c{1} - %msg%n</pattern>
+            </PatternLayout>
+            <Policies>
+                <TimeBasedTriggeringPolicy interval="1" modulate="true" />
+            </Policies>
+        </RollingFile> -->
+ 
+        <Console name="console" target="SYSTEM_OUT">
+            <PatternLayout pattern="[%-5level] %d{yyyy-MM-dd HH:mm:ss.SSS} [%t] %c{1} - breadcrumbId:%X{camel.breadcrumbId} - %-10.%X{camel.exchangeId} - %-10.%X{camel.routeId} - %msg%n" />
+        </Console>
+    </Appenders>
+
+    <Loggers>
+        <Logger name="org.springframework" level="error" additivity="true">
+            <!-- <appender-ref ref="console" /> -->
+            <appender-ref ref="fileLogger" />
+        </Logger>
+        <Root level="info" additivity="false">
+            <!-- <appender-ref ref="console" /> -->
+            <appender-ref ref="fileLogger" />
+        </Root>
+    </Loggers>
+</configuration>
