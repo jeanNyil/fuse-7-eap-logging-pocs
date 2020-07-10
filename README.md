@@ -2,7 +2,7 @@
 
 This repository contains PoC projects to demonstrating logging capabilities when _Red Hat Fuse 7_ is deployed on _Red Hat JBoss EAP 7_.
 
-* [fuse-7-eap-log4j](fuse-7-eap-mdclogging): using default JBoss Logging framework to log MDC entries - **works fine** :  :white_check_mark:
-* [fuse-7-eap-log4j](fuse-7-eap-log4j): using log4j configuration to log in a separate file - **works fine** : :white_check_mark:
-* [fuse-7-eap-log4j2](fuse-7-eap-log4j2): using log4j2 configuration to log in a separate file - **ignored but logs to JBoss EAP server.log** : :x::white_check_mark:
-* [fuse-7-eap-log4j](fuse-7-eap-logback): using logback configuration to log in a separate file - **not supported and fails to deploy** : :x:
+* :white_check_mark: - [fuse-7-eap-mdclogging](fuse-7-eap-mdclogging): using default _JBoss EAP Logging_ framework to log MDC entries - **works fine after configuring the _JBoss EAP Logging_ formatters**
+* :white_check_mark: - [fuse-7-eap-log4j](fuse-7-eap-log4j): using _Log4j_ configuration to log in a separate file - **works fine** 
+* :x::white_check_mark: - [fuse-7-eap-log4j2](fuse-7-eap-log4j2): using _Log4j2_ configuration to log in a separate file - **ignored but logs to JBoss EAP server.log**
+* :x: - [fuse-7-eap-logback](fuse-7-eap-logback): using _Logback_ configuration to log in a separate file - **not supported and fails to deploy**
